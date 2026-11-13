@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | PlaceMentor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-left">
+
+            <h1>LOGIN</h1>
+
+            <p class="login-subtitle">
+                Welcome back! Sign in to continue your placement journey.
+            </p>
+
+            <form id="loginForm">
+
+                <!-- EMAIL ADDRESS -->
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    autocomplete="email"
+                    required
+                >
+
+                <!-- PASSWORD FIELD -->
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <!-- SHOW PASSWORD OPTION -->
+
+                <div
+                    class="show-password-option"
+                    style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        margin: 12px 0 20px;
+                    "
+                >
+
+                    <input
+                        type="checkbox"
+                        id="toggleLoginPassword"
+                        style="
+                            width: 16px !important;
+                            height: 16px !important;
+                            padding: 0 !important;
+                            margin: 0 !important;
+                            flex-shrink: 0;
+                            box-shadow: none !important;
+                            cursor: pointer;
+                        "
+                    >
+
+                    <label
+                        for="toggleLoginPassword"
+                        style="
+                            font-size: 14px;
+                            cursor: pointer;
+                            margin: 0;
+                        "
+                    >
+                        Show Password
+                    </label>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="button"
+                    class="login-btn"
+                    onclick="login()"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- CREATE ACCOUNT LINK -->
+
+            <p class="signup-link">
+
+                Don't have an account?
+
+                <a href="createaccount.html">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-right">
+
+            <img
+                src="images/logo.png"
+                class="right-logo"
+                alt="PlaceMentor Logo"
+            >
+
+            <h2>PlaceMentor</h2>
+
+            <p>
+                Prepare. Practice. Perform. Get Placed.
+            </p>
+
+            <div class="floating-icons">
+
+                <span>🎓</span>
+                <span>💻</span>
+                <span>📚</span>
+                <span>🚀</span>
+                <span>💼</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LOGIN JAVASCRIPT -->
+
+    <script src="login.js"></script>
+
+</body>
+</html>

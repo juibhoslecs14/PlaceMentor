@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | PlaceMentor</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="settings.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img src="images/logo.png" class="logo" alt="PlaceMentor Logo">
+                <h2>PlaceMentor</h2>
+            </div>
+
+            <p class="sidebar-label">MAIN MENU</p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+                    <a href="dashboard.html">🏠 Home</a>
+                </li>
+
+                <li>
+                    <a href="aimock.html">🤖 AI Mock Interview</a>
+                </li>
+
+                <li>
+                    <a href="quiz.html">🧠 Quizzes</a>
+                </li>
+
+                <li>
+                    <a href="course.html">📚 Course Recommendation</a>
+                </li>
+
+                <li>
+                    <a href="resume.html">📄 Resume Builder</a>
+                </li>
+
+                <li>
+                    <a href="profile.html">👤 Profile</a>
+                </li>
+
+                <li class="active">
+                    <a href="settings.html">⚙️ Settings</a>
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP NAVIGATION -->
+            <nav class="top-nav">
+
+                <div class="breadcrumb">
+                    <span>PlaceMentor</span>
+                    <span>›</span>
+                    <strong>Settings</strong>
+                </div>
+
+                <div class="nav-links">
+                    <a href="dashboard.html">Home</a>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="about.html">About</a>
+                </div>
+
+            </nav>
+
+
+            <!-- SETTINGS PAGE -->
+            <section class="settings-page">
+
+                <div class="settings-heading">
+                    <h1>⚙️ Settings</h1>
+                    <p>Customize your PlaceMentor experience.</p>
+                </div>
+
+
+                <!-- ACCOUNT INFORMATION -->
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <span class="settings-icon">👤</span>
+
+                        <div>
+                            <h2>Account Information</h2>
+                            <p>View your registered account details.</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-info">
+                        <div>
+                            <label>Full Name</label>
+                            <p id="settingsName">Loading...</p>
+                        </div>
+
+                        <div>
+                            <label>Email Address</label>
+                            <p id="settingsEmail">Loading...</p>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" class="settings-link">
+                        Manage Profile →
+                    </a>
+
+                </div>
+
+
+                <!-- APPEARANCE SETTINGS -->
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <span class="settings-icon">🎨</span>
+
+                        <div>
+                            <h2>Appearance</h2>
+                            <p>Choose how your page looks.</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-option">
+                        <div>
+                            <h3>Comfortable Layout</h3>
+                            <p>Use a spacious layout with comfortable spacing.</p>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="comfortableLayout">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <!-- NOTIFICATION SETTINGS -->
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <span class="settings-icon">🔔</span>
+
+                        <div>
+                            <h2>Notifications</h2>
+                            <p>Manage your learning reminders and updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-option">
+                        <div>
+                            <h3>Learning Reminders</h3>
+                            <p>Receive reminders to continue your preparation.</p>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="learningReminders">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-option">
+                        <div>
+                            <h3>Course Updates</h3>
+                            <p>Stay informed about course recommendations.</p>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="courseUpdates">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY SETTINGS -->
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <span class="settings-icon">🔒</span>
+
+                        <div>
+                            <h2>Security</h2>
+                            <p>Keep your account safe and secure.</p>
+                        </div>
+                    </div>
+
+                    <div class="security-option">
+                        <div>
+                            <h3>Password & Account Security</h3>
+                            <p>Manage your account through your profile.</p>
+                        </div>
+
+                        <a href="profile.html" class="settings-link">
+                            View Profile →
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- SAVE SETTINGS -->
+                <div class="settings-save">
+                    <button type="button" id="saveSettingsBtn">
+                        Save Preferences
+                    </button>
+
+                    <p id="settingsMessage"></p>
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="settings.js"></script>
+
+</body>
+</html>

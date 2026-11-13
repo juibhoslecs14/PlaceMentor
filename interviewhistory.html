@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interview History | PlaceMentor</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="interviewhistory.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img src="images/logo.png" class="logo" alt="PlaceMentor Logo">
+                <h2>Place<span>Mentor</span></h2>
+            </div>
+
+            <p class="sidebar-label">MENU</p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="aimock.html">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>AI Mock Interview</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="quiz.html">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Quizzes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="course.html">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Course Recommendation</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="resume.html">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Resume Builder</span>
+                    </a>
+                </li>
+
+                <!-- ACTIVE PAGE -->
+                <li class="active">
+                    <a href="interviewhistory.html">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Interview History</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="profile.html">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-decoration">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <p>
+                        Prepare. Practice.<br>
+                        Perform. Get Placed.
+                    </p>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP NAVIGATION -->
+            <nav class="top-nav">
+
+                <div class="breadcrumb">
+                    <span>My Workspace</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong>Interview History</strong>
+                </div>
+
+                <div class="nav-links">
+
+                    <a href="profile.html">
+                        <i class="fa-regular fa-user"></i>
+                        Profile
+                    </a>
+
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+
+                    <a href="about.html">About</a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- PAGE HEADING -->
+            <section class="history-heading">
+
+                <div>
+
+                    <p class="eyebrow">TRACK YOUR IMPROVEMENT</p>
+
+                    <h1>Interview <span>History</span></h1>
+
+                    <p class="page-subtitle">
+                        Review your previous AI mock interviews, scores and feedback.
+                    </p>
+
+                </div>
+
+                <div class="history-heading-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+            </section>
+
+
+            <!-- INTERVIEW STATISTICS -->
+            <section class="history-stats">
+
+                <div class="history-stat-card">
+
+                    <i class="fa-solid fa-video"></i>
+
+                    <div>
+                        <h2 id="totalInterviews">0</h2>
+                        <p>Total Interviews</p>
+                    </div>
+
+                </div>
+
+
+                <div class="history-stat-card">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <div>
+                        <h2 id="averageScore">0%</h2>
+                        <p>Average Score</p>
+                    </div>
+
+                </div>
+
+
+                <div class="history-stat-card">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    <div>
+                        <h2 id="bestScore">0%</h2>
+                        <p>Best Score</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- INTERVIEW HISTORY LIST -->
+            <section class="history-container">
+
+                <div class="history-title">
+
+                    <div>
+                        <p class="eyebrow">YOUR PREVIOUS ATTEMPTS</p>
+                        <h2>All Mock Interviews</h2>
+                    </div>
+
+                    <a href="aimock.html" class="new-interview-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        New Interview
+                    </a>
+
+                </div>
+
+
+                <div id="interviewHistoryList">
+
+                    <p class="history-loading">
+                        Loading your interview history...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+
+                <p>
+                    © 2026 PlaceMentor.
+                    Prepare. Practice. Perform. Get Placed.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="interviewhistory.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz | PlaceMentor</title>
+
+<link rel="stylesheet" href="quiz.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🧠 Quiz Zone</h1>
+
+<p class="subtitle">
+
+Test your placement knowledge in a fun way!
+
+</p>
+
+<!-- Welcome Screen -->
+
+<div class="welcome-card" id="welcomeCard">
+
+<div class="emoji">🧠 💻 🚀 🎯 📚 💼 ⭐</div>
+
+<h2>Ready for a Fun Quiz?</h2>
+
+<p>
+
+10 Random Questions
+
+<br>
+
+Mix of Technical + HR + Resume + Communication
+
+</p>
+
+<button id="startQuiz">
+
+🚀 Start Quiz
+
+</button>
+
+</div>
+
+<!-- Quiz Card -->
+
+<div class="quiz-card" id="quizCard">
+
+<h2 id="questionNo"></h2>
+
+<p id="question"></p>
+
+<div class="options">
+
+<button class="option"></button>
+
+<button class="option"></button>
+
+<button class="option"></button>
+
+<button class="option"></button>
+
+</div>
+
+</div>
+
+<!-- Result -->
+
+<div class="result-card" id="resultCard">
+
+<h2>🎉 Quiz Completed!</h2>
+
+<h1 id="score"></h1>
+
+<p id="message"></p>
+
+<button onclick="location.reload()">
+
+🔄 Play Again
+
+</button>
+
+<button onclick="window.location.href='dashboard.html'">
+
+🏠 Dashboard
+
+</button>
+
+</div>
+
+</div>
+
+<script src="quiz.js"></script>
+
+</body>
+
+</html>

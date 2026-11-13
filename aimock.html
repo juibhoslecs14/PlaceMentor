@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Mock Interview | PlaceMentor</title>
+
+    <link rel="stylesheet" href="aimock.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Mock Interview</h1>
+
+        <p class="subtitle">
+            Practice realistic placement interview questions and receive AI-powered feedback.
+        </p>
+
+        <!-- Interview Setup -->
+        ```html
+<!-- Interview Setup -->
+<div class="setup-card" id="setupCard">
+
+    <h2>Interview Setup</h2>
+
+    <div class="setup-row">
+
+        <!-- Interview Type -->
+        <div class="setup-group">
+            <label for="type">Interview Type</label>
+
+            <select id="type">
+                <option value="HR Interview">HR Interview</option>
+                <option value="Technical Interview">Technical Interview</option>
+                <option value="Mixed Interview">Mixed Interview</option>
+            </select>
+        </div>
+
+        <!-- Job Role -->
+        <div class="setup-group">
+            <label for="role">Job Role</label>
+
+            <select id="role">
+                <option value="Java Developer">Java Developer</option>
+                <option value="Python Developer">Python Developer</option>
+                <option value="Web Developer">Web Developer</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Software Developer">Software Developer</option>
+            </select>
+        </div>
+
+        <!-- Difficulty -->
+        <div class="setup-group">
+            <label for="difficulty">Difficulty</label>
+
+            <select id="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+
+    </div>
+
+    <!-- Interview Mode -->
+    <div class="setup-row">
+
+        <div class="setup-group">
+            <label for="interviewMode">Interview Mode</label>
+
+            <select id="interviewMode">
+                <option value="practice">Practice Mode – No Time Limit</option>
+                <option value="timed">Timed Mode – 5 Minutes</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button id="startBtn" class="start-btn">
+        🚀 Start Interview
+    </button>
+
+</div>
+```
+        <!-- Interview Timer -->
+        <div class="timer" id="timer" style="display:none;">
+            ⏱ Time Left : <span id="time">05:00</span>
+        </div>
+
+
+        <!-- Interview Questions -->
+        <div class="question-card" id="questionCard" style="display:none;">
+
+            <h2 id="questionNo">Question 1 of 5</h2>
+
+            <p id="question"></p>
+
+            <div class="answer-options">
+
+                <button id="writeBtn">✍ Write Answer</button>
+
+                <button id="speakBtn">🎤 Speak Answer</button>
+
+            </div>
+
+            <textarea id="answer"
+                placeholder="Type your answer here..."
+                style="display:none;"></textarea>
+
+            <p id="voiceStatus" style="display:none;"></p>
+
+            <div class="buttons">
+                <button id="nextBtn">Next Question →</button>
+            </div>
+
+        </div>
+
+
+        <!-- AI Loading Screen -->
+        <div class="loading-screen" id="loadingScreen" style="display:none;">
+
+            <h2>🤖 AI is Analysing Your Interview...</h2>
+
+            <p>Please wait while AI evaluates your responses.</p>
+
+            <div class="loader"></div>
+
+            <div class="loading-text">
+                <p>✔ Checking Communication...</p>
+                <p>✔ Analysing Your Answers...</p>
+                <p>✔ Checking Technical Knowledge...</p>
+                <p>✔ Generating AI Feedback...</p>
+            </div>
+
+        </div>
+
+
+        <!-- AI Interview Report -->
+        <div class="feedback" id="feedback" style="display:none;">
+
+            <h2>🎉 AI Interview Report</h2>
+
+            <div class="report-card">
+
+                <p>
+                    <strong>Questions Attempted:</strong>
+                    <span id="attempted">0 / 5</span>
+                </p>
+
+                <p>
+                    <strong>Overall Score:</strong>
+                    <span id="score">--</span>
+                </p>
+
+                <div class="report-section">
+                    <h3>🌟 What You Did Well</h3>
+                    <ul id="strengths"></ul>
+                </div>
+
+                <div class="report-section">
+                    <h3>📌 What You Can Improve</h3>
+                    <ul id="improvements"></ul>
+                </div>
+
+                <div class="report-section">
+                    <h3>💡 AI Suggestion</h3>
+                    <p id="recommendation">
+                        Your personalised feedback will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="feedback-buttons">
+
+                <button onclick="location.reload()">
+                    🔄 Restart Interview
+                </button>
+
+                <button onclick="window.location.href='dashboard.html'">
+                    🏠 Return to Dashboard
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="aimock.js"></script>
+
+</body>
+</html>

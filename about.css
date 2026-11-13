@@ -1,0 +1,470 @@
+
+/* =====================================
+       PLACEMENTOR - ABOUT PAGE
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 45px 20px;
+    color: #45312B;
+
+    /* Background Image */
+    background:
+        linear-gradient(
+            rgba(248, 245, 242, 0.65),
+            rgba(248, 245, 242, 0.65)
+        ),
+        url("images/about-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* =====================================
+          MAIN CONTAINER
+===================================== */
+
+.about-container {
+    width: 95%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* =====================================
+          HERO SECTION
+===================================== */
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #6D4C41,
+        #4E342E
+    );
+
+    color: white;
+    text-align: center;
+    padding: 65px 35px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+
+    box-shadow: 0 12px 28px rgba(78, 52, 46, 0.18);
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-section h1 {
+    font-size: 43px;
+    margin-bottom: 15px;
+}
+
+.hero-section h1 span {
+    color: #E8C9B5;
+}
+
+.hero-section > p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 16px;
+    color: #F4EAE5;
+}
+
+.hero-tagline {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 30px;
+    font-weight: 600;
+    color: #FFF3E9;
+}
+
+/* =====================================
+          COMMON CARDS
+===================================== */
+
+.about-card,
+.workflow-section,
+.features-section,
+.technology-section {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    padding: 40px 45px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: 0.3s;
+}
+
+.about-card:hover,
+.technology-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+.section-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.about-card {
+    text-align: center;
+}
+
+.about-card h2,
+.technology-section h2 {
+    color: #4E342E;
+    font-size: 27px;
+    margin-bottom: 18px;
+}
+
+.about-card p,
+.technology-section > p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.9;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+/* =====================================
+          SECTION HEADINGS
+===================================== */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading > span {
+    font-size: 30px;
+}
+
+.section-heading h2 {
+    color: #4E342E;
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* =====================================
+          WORKFLOW SECTION
+===================================== */
+
+.workflow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.flow-card {
+    flex: 1;
+    min-height: 185px;
+
+    background: #F8F1EC;
+    border: 1px solid #E8D8CF;
+    border-radius: 17px;
+
+    padding: 25px 12px;
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.flow-card:hover {
+    background: #6D4C41;
+    color: white;
+    transform: translateY(-6px);
+}
+
+.flow-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.flow-card h3 {
+    font-size: 15px;
+    color: #4E342E;
+    margin-bottom: 8px;
+}
+
+.flow-card:hover h3,
+.flow-card:hover p {
+    color: white;
+}
+
+.flow-card p {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.6;
+}
+
+.flow-arrow {
+    font-size: 25px;
+    color: #8D6251;
+    font-weight: 600;
+}
+
+/* =====================================
+          FEATURES SECTION
+===================================== */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    background: #FAF7F4;
+    border: 1px solid #EDE2DB;
+    border-radius: 17px;
+
+    padding: 28px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: #F2E6DE;
+
+    box-shadow: 0 8px 18px rgba(78, 52, 46, 0.08);
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.feature-card h3 {
+    color: #4E342E;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =====================================
+          TECHNOLOGY SECTION
+===================================== */
+
+.technology-section {
+    text-align: center;
+}
+
+.technology-section > p {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 25px;
+}
+
+.technology-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.technology-list span {
+    background: #F1E5DD;
+    color: #5D4037;
+
+    border: 1px solid #E2CFC3;
+    padding: 11px 22px;
+
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.technology-list span:hover {
+    background: #6D4C41;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+          CLOSING SECTION
+===================================== */
+
+.closing-section {
+    background: rgba(237, 224, 215, 0.95);
+
+    text-align: center;
+    padding: 45px 25px;
+
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.closing-section h2 {
+    color: #4E342E;
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.closing-section p {
+    color: #6D5A52;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* BACK TO DASHBOARD BUTTON */
+
+.back-btn {
+    background: #6D4C41;
+    color: white;
+
+    border: none;
+    padding: 14px 30px;
+
+    border-radius: 11px;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #4E342E;
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 15px rgba(78, 52, 46, 0.2);
+}
+
+/* =====================================
+          FOOTER
+===================================== */
+
+.about-footer {
+    text-align: center;
+    color: #6D5A52;
+    font-size: 13px;
+    padding: 15px;
+
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+}
+
+/* =====================================
+          RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 25px 15px;
+        background-attachment: scroll;
+    }
+
+    .workflow {
+        flex-wrap: wrap;
+    }
+
+    .flow-card {
+        flex: 1 1 38%;
+    }
+
+    .flow-arrow {
+        display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .about-container {
+        width: 100%;
+    }
+
+    .hero-section {
+        padding: 45px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 31px;
+    }
+
+    .hero-section > p {
+        font-size: 14px;
+    }
+
+    .about-card,
+    .technology-section {
+        padding: 30px 22px;
+    }
+
+    .about-card h2,
+    .technology-section h2 {
+        font-size: 23px;
+    }
+
+    .workflow-section,
+    .features-section {
+        padding: 30px 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .workflow {
+        flex-direction: column;
+    }
+
+    .flow-card {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .closing-section h2 {
+        font-size: 24px;
+    }
+
+    .technology-list span {
+        font-size: 12px;
+        padding: 9px 16px;
+    }
+
+}

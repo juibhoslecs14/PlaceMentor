@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlaceMentor | Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img src="images/logo.png" class="logo" alt="PlaceMentor Logo">
+                <h2>Place<span>Mentor</span></h2>
+            </div>
+
+            <p class="sidebar-label">MENU</p>
+
+           
+<ul class="sidebar-menu">
+
+    <li class="active">
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="aimock.html">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Mock Interview</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="quiz.html">
+            <i class="fa-solid fa-brain"></i>
+            <span>Quizzes</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="course.html">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Course Recommendation</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="resume.html">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>Resume Builder</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="interviewhistory.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Interview History</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="profile.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="settings.html">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+    </li>
+
+</ul>
+
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-decoration">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <p>Prepare. Practice.<br>Perform. Get Placed.</p>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP NAVIGATION -->
+            <nav class="top-nav">
+
+                <div class="breadcrumb">
+                    <span>My Workspace</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong>Dashboard</strong>
+                </div>
+
+                <div class="nav-links">
+
+                    <a href="profile.html">
+                        <i class="fa-regular fa-user"></i>
+                        Profile
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-regular fa-bell"></i>
+                        Notifications
+                    </a>
+
+                    <a href="settings.html">
+                        <i class="fa-solid fa-gear"></i>
+                        Settings
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- PAGE INTRODUCTION -->
+            <section class="page-heading">
+                <div>
+                    <p class="eyebrow">YOUR PLACEMENT JOURNEY</p>
+
+                    <h1>Dashboard <span>Overview</span></h1>
+
+                    <p class="page-subtitle">
+                        Track your progress, improve your skills and get ready for placements.
+                    </p>
+                </div>
+
+                <div class="heading-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+            </section>
+
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <!-- LEFT CONTENT -->
+                <section class="left-content">
+
+                    <!-- WELCOME BANNER -->
+                    <div class="welcome">
+
+                        <div class="welcome-content">
+
+                            <span class="welcome-tag">
+                                <i class="fa-solid fa-sparkles"></i>
+                                YOUR FUTURE STARTS HERE
+                            </span>
+
+                            <h1 id="welcomeMessage">
+                                👋 Welcome Back!
+                            </h1>
+
+                            <p>
+                                Your dream placement starts with one small step today.
+                                Stay consistent, practice daily, and let PlaceMentor guide you.
+                            </p>
+
+                            <button
+                                class="start-btn"
+                                type="button"
+                                onclick="window.location.href='aimock.html'"
+                            >
+                                Start Practising
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="welcome-decoration">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATISTICS -->
+                    <section class="stats-section">
+
+                        <div class="section-heading">
+                            <div>
+                                <p class="eyebrow">YOUR PERFORMANCE</p>
+                                <h2>Learning Statistics</h2>
+                            </div>
+                        </div>
+
+                        <div class="stats">
+
+                            <div class="stat-box quiz-stat">
+
+                                <div class="stat-icon">
+                                    <i class="fa-solid fa-brain"></i>
+                                </div>
+
+                                <div>
+                                    <h2>0</h2>
+                                    <p>Quizzes Completed</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat-box interview-stat">
+
+                                <div class="stat-icon">
+                                    <i class="fa-solid fa-video"></i>
+                                </div>
+
+                                <div>
+                                    <h2>0</h2>
+                                    <p>Mock Interviews</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat-box accuracy-stat">
+
+                                <div class="stat-icon">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                </div>
+
+                                <div>
+                                    <h2>0%</h2>
+                                    <p>Overall Accuracy</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+<div class="stat-box course-stat">
+
+    <div class="stat-icon">
+        <i class="fa-solid fa-book-open"></i>
+    </div>
+
+    <div>
+        <h2 id="completedCourses">0</h2>
+        <p>Courses Completed</p>
+    </div>
+
+</div>
+
+
+
+                    <!-- QUIZ HISTORY -->
+                    <section class="quiz-history-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <p class="eyebrow">KEEP IMPROVING</p>
+                                <h2>
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                    Recent Quiz Attempts
+                                </h2>
+                            </div>
+
+                            <a href="quiz.html" class="view-all">
+                                Practice More
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                        <div id="quizHistoryList">
+                            <p>Loading quiz history...</p>
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+                <!-- RIGHT CONTENT -->
+                <aside class="right-content">
+
+                    <!-- TODAY'S PROGRESS -->
+                    <section class="progress-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <p class="eyebrow">DAILY ACTIVITY</p>
+                                <h2>
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    Today's Progress
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="progress-circle-decoration">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div
+                                class="progress-fill"
+                                id="progressFill"
+                                style="width: 0%;">
+                            </div>
+                        </div>
+
+                        <p id="progressText">
+                            0% Completed Today
+                        </p>
+
+                    </section>
+
+
+                    <!-- TODAY'S GOALS -->
+                    <section class="goal-card">
+
+                        <div class="goal-header">
+
+                            <div>
+                                <p class="eyebrow">STAY CONSISTENT</p>
+                                <h2>
+                                    <i class="fa-solid fa-bullseye"></i>
+                                    Today's Goals
+                                </h2>
+                            </div>
+
+                            <button
+                                type="button"
+                                id="editGoalsBtn"
+                                class="edit-goals-btn"
+                            >
+                                <i class="fa-solid fa-pen"></i>
+                                Edit
+                            </button>
+
+                        </div>
+
+                        <div id="goalList"></div>
+
+                        <button
+                            type="button"
+                            id="addGoalBtn"
+                            class="add-goal-btn"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            Add Goal
+                        </button>
+
+                    </section>
+
+
+                    <!-- MOTIVATIONAL CARD -->
+                    <section class="motivation-card">
+
+                        <div class="motivation-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <p class="eyebrow">A LITTLE REMINDER</p>
+
+                        <h3>Small steps lead to big achievements.</h3>
+
+                        <p>
+                            Keep learning, keep practising and believe in your progress.
+                        </p>
+
+                        <div class="motivation-decoration">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>© 2026 PlaceMentor. Prepare. Practice. Perform. Get Placed.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="dashboard.js"></script>
+
+</body>
+</html>

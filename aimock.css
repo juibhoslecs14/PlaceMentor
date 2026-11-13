@@ -1,0 +1,545 @@
+
+/* ==============================
+   GLOBAL STYLING
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 50px 25px;
+
+    background-color: #E8D8CF;
+
+    background-image:
+        linear-gradient(
+            rgba(248, 245, 242, 0.35),
+            rgba(232, 216, 207, 0.45)
+        ),
+        url("./images/aimock-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ==============================
+   PAGE HEADING
+============================== */
+
+h1 {
+    color: #4E342E;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    animation: headingGlow 3s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    text-align: center;
+    color: #795548;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+@keyframes headingGlow {
+    from {
+        text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    }
+
+    to {
+        text-shadow: 0 0 18px rgba(255,255,255,0.8);
+    }
+}
+
+
+/* ==============================
+   FLOATING INTERVIEW SETUP CARD
+============================== */
+
+.setup-card {
+    width: 100%;
+    max-width: 700px;
+    margin: 65px auto;
+    padding: 42px 48px;
+
+    background: rgba(255, 250, 245, 0.88);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 26px;
+
+    box-shadow:
+        0 20px 45px rgba(78,52,46,0.16),
+        0 5px 15px rgba(78,52,46,0.08);
+
+    animation: floatCard 4s ease-in-out infinite;
+
+    transition: box-shadow 0.3s ease;
+}
+
+.setup-card:hover {
+    box-shadow: 0 25px 55px rgba(78,52,46,0.23);
+}
+
+@keyframes floatCard {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.setup-card h2 {
+    color: #4E342E;
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+
+/* ==============================
+   SETUP DROPDOWNS
+============================== */
+
+.setup-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.setup-group {
+    flex: 1;
+    min-width: 0;
+}
+
+.setup-group label {
+    display: block;
+    color: #795548;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+.setup-group select {
+    width: 100%;
+    padding: 13px 10px;
+
+    border: 1px solid #D8C1B4;
+    border-radius: 12px;
+
+    background: #FFFDFC;
+    color: #4E342E;
+
+    font-family: inherit;
+    font-size: 12px;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.setup-group select:focus {
+    border-color: #A47560;
+
+    box-shadow:
+        0 0 0 3px rgba(176,137,104,0.15);
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.start-btn {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+
+    margin: 0 auto;
+    padding: 14px 20px;
+
+    background: linear-gradient(135deg, #795548, #A47560);
+    color: white;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.start-btn:hover {
+    background: linear-gradient(135deg, #4E342E, #795548);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(78,52,46,0.2);
+}
+
+
+/* ==============================
+   TIMER
+============================== */
+
+.timer {
+    width: fit-content;
+    margin: 25px auto;
+
+    padding: 13px 25px;
+
+    background: rgba(255,250,245,0.92);
+
+    border-radius: 15px;
+
+    color: #4E342E;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    box-shadow: 0 8px 20px rgba(78,52,46,0.12);
+}
+
+
+/* ==============================
+   QUESTION CARD
+============================== */
+
+.question-card {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 35px;
+
+    background: rgba(255,250,245,0.94);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid white;
+    border-radius: 22px;
+
+    box-shadow: 0 15px 35px rgba(78,52,46,0.15);
+}
+
+.question-card h2 {
+    color: #795548;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.question-card > p {
+    color: #4E342E;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   WRITE AND SPEAK BUTTONS
+============================== */
+
+.answer-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.answer-options button,
+.buttons button {
+    padding: 12px 22px;
+
+    background: #795548;
+    color: white;
+
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.answer-options button:hover,
+.buttons button:hover {
+    background: #4E342E;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   ANSWER TEXTAREA
+============================== */
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+
+    padding: 15px;
+
+    border: 1px solid #D8C1B4;
+    border-radius: 15px;
+
+    background: #FFFDFC;
+    color: #4E342E;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #A47560;
+    box-shadow: 0 0 0 3px rgba(176,137,104,0.12);
+}
+
+
+/* ==============================
+   VOICE STATUS
+============================== */
+
+#voiceStatus {
+    color: #795548;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+
+/* ==============================
+   NEXT BUTTON
+============================== */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+
+/* ==============================
+   AI LOADING SCREEN
+============================== */
+
+.loading-screen {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 40px;
+
+    text-align: center;
+
+    background: rgba(255,250,245,0.94);
+
+    border-radius: 22px;
+
+    box-shadow: 0 15px 35px rgba(78,52,46,0.15);
+}
+
+.loading-screen h2 {
+    color: #4E342E;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.loading-screen > p {
+    color: #795548;
+    font-size: 14px;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+
+    margin: 25px auto;
+
+    border: 5px solid #E8D8CF;
+    border-top: 5px solid #795548;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    color: #795548;
+    font-size: 13px;
+    line-height: 2;
+}
+
+
+/* ==============================
+   AI FEEDBACK REPORT
+============================== */
+
+.feedback {
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+.feedback > h2 {
+    text-align: center;
+    color: #FFF8F2;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.report-card {
+    padding: 30px 35px;
+
+    background: rgba(255,250,245,0.95);
+
+    border: 1px solid white;
+    border-radius: 22px;
+
+    box-shadow: 0 15px 35px rgba(78,52,46,0.15);
+}
+
+.report-card > p {
+    color: #4E342E;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.report-card strong {
+    color: #795548;
+}
+
+#score {
+    color: #795548;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.report-section {
+    margin-top: 25px;
+}
+
+.report-section h3 {
+    color: #4E342E;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.report-section ul {
+    padding-left: 22px;
+    color: #795548;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.report-section p {
+    color: #795548;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   REPORT BUTTONS
+============================== */
+
+.feedback-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feedback-buttons button {
+    padding: 13px 22px;
+
+    background: #795548;
+    color: white;
+
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.feedback-buttons button:hover {
+    background: #4E342E;
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .setup-card {
+        max-width: 95%;
+        padding: 30px 22px;
+        margin: 40px auto;
+    }
+
+    .setup-row {
+        flex-direction: column;
+    }
+
+    .question-card {
+        padding: 25px 20px;
+    }
+
+    .answer-options,
+    .feedback-buttons {
+        flex-direction: column;
+    }
+
+    .answer-options button,
+    .feedback-buttons button {
+        width: 100%;
+    }
+
+    .report-card {
+        padding: 25px 20px;
+    }
+}

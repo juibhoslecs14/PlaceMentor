@@ -1,0 +1,483 @@
+
+/* =========================================
+   PLACEMENTOR - QUIZ ZONE
+   Theme: Fun Quiz | Cream & Coffee Brown
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 55px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            rgba(248, 243, 239, 0.78),
+            rgba(238, 227, 218, 0.84)
+        ),
+        url("images/quiz-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #49342d;
+}
+
+/* =========================================
+   BACKGROUND DECORATIONS
+========================================= */
+
+body::before {
+    content: "?";
+    position: fixed;
+    top: 8%;
+    left: 7%;
+    font-size: 150px;
+    font-weight: 700;
+    color: rgba(109, 76, 65, 0.09);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+body::after {
+    content: "✦";
+    position: fixed;
+    bottom: 10%;
+    right: 9%;
+    font-size: 110px;
+    color: rgba(164, 119, 95, 0.14);
+    pointer-events: none;
+}
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.container > h1 {
+    color: #56392f;
+    font-size: 43px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.5);
+}
+
+.subtitle {
+    color: #806c61;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* =========================================
+   WELCOME CARD
+========================================= */
+
+.welcome-card {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.91);
+    padding: 48px 40px;
+
+    border-radius: 26px;
+    border: 1px solid rgba(139, 90, 60, 0.18);
+
+    box-shadow:
+        0 20px 50px rgba(78, 48, 36, 0.13),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.welcome-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #c49a7d,
+        #68483d,
+        #a8785f,
+        #d6b49a
+    );
+}
+
+.welcome-card::after {
+    content: "✦";
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-size: 32px;
+    color: #c49a7d;
+    opacity: 0.7;
+}
+
+.welcome-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 55px rgba(78, 48, 36, 0.17);
+}
+
+.welcome-card h2 {
+    color: #56392f;
+    font-size: 30px;
+    margin: 20px 0 13px;
+    font-weight: 700;
+}
+
+.welcome-card p {
+    color: #81716a;
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* =========================================
+   FLOATING EMOJIS
+========================================= */
+
+.emoji {
+    font-size: 38px;
+    margin-bottom: 20px;
+    letter-spacing: 7px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#startQuiz,
+.result-card button {
+    background: linear-gradient(
+        135deg,
+        #795447,
+        #56392f
+    );
+
+    color: white;
+    padding: 15px 38px;
+    border-radius: 35px;
+    font-size: 16px;
+    margin-top: 28px;
+
+    box-shadow: 0 7px 17px rgba(86, 57, 47, 0.22);
+}
+
+#startQuiz:hover,
+.result-card button:hover {
+    background: linear-gradient(
+        135deg,
+        #56392f,
+        #3f2922
+    );
+
+    transform: translateY(-4px);
+    box-shadow: 0 11px 22px rgba(86, 57, 47, 0.28);
+}
+
+/* =========================================
+   QUIZ CARD
+========================================= */
+
+.quiz-card {
+    display: none;
+
+    background: rgba(255, 255, 255, 0.94);
+    padding: 42px;
+
+    border-radius: 24px;
+    border: 1px solid rgba(139, 90, 60, 0.15);
+
+    box-shadow: 0 18px 45px rgba(78, 48, 36, 0.13);
+
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.quiz-card h2 {
+    color: #9a725d;
+    font-size: 16px;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+#question {
+    font-size: 21px;
+    font-weight: 600;
+    color: #49342d;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   ANSWER OPTIONS
+========================================= */
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.option {
+    width: 100%;
+    text-align: left;
+
+    background: #f7f1ec;
+    color: #58443b;
+
+    border: 1px solid #e9dcd2;
+    padding: 17px 20px;
+
+    border-radius: 13px;
+    font-size: 15px;
+    margin: 0;
+
+    transition: all 0.25s ease;
+}
+
+.option:hover {
+    background: #795447;
+    color: white;
+    border-color: #795447;
+
+    transform: translateX(5px);
+
+    box-shadow: 0 5px 14px rgba(86, 57, 47, 0.16);
+}
+
+.option:focus-visible,
+button:focus-visible {
+    outline: 3px solid #c49a7d;
+    outline-offset: 3px;
+}
+
+/* =========================================
+   RESULT CARD
+========================================= */
+
+.result-card {
+    display: none;
+
+    background: rgba(255, 255, 255, 0.94);
+    padding: 45px 38px;
+
+    border-radius: 24px;
+    border: 1px solid rgba(139, 90, 60, 0.15);
+
+    box-shadow: 0 18px 45px rgba(78, 48, 36, 0.13);
+
+    backdrop-filter: blur(10px);
+}
+
+.result-card h2 {
+    color: #56392f;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+#score {
+    color: #a4775f;
+    font-size: 58px;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+#message {
+    color: #81716a;
+    font-size: 16px;
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   ANSWER REVIEW
+========================================= */
+
+.answer-review {
+    margin-top: 35px;
+    padding: 25px;
+
+    text-align: left;
+
+    background: #faf6f2;
+    border: 1px solid #eaded5;
+
+    border-radius: 17px;
+}
+
+.answer-review h2 {
+    color: #56392f;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.review-item {
+    padding: 18px;
+    margin-bottom: 16px;
+
+    border-radius: 12px;
+    border: 1px solid;
+}
+
+.review-item h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: #49342d;
+}
+
+.review-item p {
+    font-size: 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+}
+
+/* Correct Answers */
+
+.correct-answer {
+    background: #eff8ef;
+    border-color: #a5d6a7;
+}
+
+.correct-answer .answer-status,
+.correct-answer-text {
+    color: #278044;
+    font-weight: 600;
+}
+
+/* Wrong Answers */
+
+.wrong-answer {
+    background: #fff0ed;
+    border-color: #e6aaa0;
+}
+
+.wrong-answer .answer-status {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 35px 15px;
+        background-attachment: scroll;
+    }
+
+    body::before {
+        font-size: 90px;
+    }
+
+    body::after {
+        font-size: 70px;
+    }
+
+    .container > h1 {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .welcome-card,
+    .quiz-card,
+    .result-card {
+        padding: 32px 22px;
+    }
+
+    .welcome-card h2 {
+        font-size: 24px;
+    }
+
+    .emoji {
+        font-size: 27px;
+        letter-spacing: 3px;
+    }
+
+    #question {
+        font-size: 18px;
+    }
+
+    #score {
+        font-size: 45px;
+    }
+
+    #startQuiz,
+    .result-card button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .container > h1 {
+        font-size: 29px;
+    }
+
+    .emoji {
+        font-size: 23px;
+    }
+
+    .welcome-card,
+    .quiz-card,
+    .result-card {
+        padding: 27px 17px;
+    }
+
+    .option {
+        padding: 15px;
+        font-size: 14px;
+    }
+}

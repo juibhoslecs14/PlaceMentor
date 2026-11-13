@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Builder | PlaceMentor</title>
+
+    <!-- Resume CSS -->
+    <link rel="stylesheet" href="resume.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="resume-page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <h1>📄 Resume Builder</h1>
+
+        <p>
+            Create a professional resume that helps you stand out to recruiters.
+        </p>
+
+    </div>
+
+
+    <!-- BUILDER LAYOUT -->
+
+    <div class="builder-layout">
+
+
+        <!-- LEFT SIDE - FORM -->
+
+        <div class="form-section">
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>👤</span>
+
+                    <div>
+                        <h2>Personal Information</h2>
+
+                        <p>
+                            Add your basic contact details.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="e.g. Jui Bhosle"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width photo-upload-group">
+
+                        <label>Professional Profile Photo</label>
+
+                        <div class="photo-upload-box">
+
+                            <img
+                                id="profilePhotoPreview"
+                                src=""
+                                alt="Profile Preview"
+                                style="display: none;"
+                            >
+
+                            <div id="photoPlaceholder">
+                                📸
+                                <p>Upload your professional photo</p>
+                            </div>
+
+                            <input
+                                type="file"
+                                id="profilePhoto"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+                        <small>Use a clear, professional photograph.</small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="e.g. jui@gmail.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="e.g. +91 9876543210"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Location</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="e.g. Mumbai, India"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>LinkedIn</label>
+
+                        <input
+                            type="url"
+                            id="linkedin"
+                            placeholder="LinkedIn profile URL"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>GitHub</label>
+
+                        <input
+                            type="url"
+                            id="github"
+                            placeholder="GitHub profile URL"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFESSIONAL SUMMARY -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>🎯</span>
+
+                    <div>
+
+                        <h2>Professional Summary</h2>
+
+                        <p>
+                            Write a short introduction about yourself.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <textarea
+                        id="summary"
+                        rows="5"
+                        placeholder="Example: Motivated Computer Science student with an interest in cybersecurity and software development..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PREFERRED ROLE AND CAREER INTERESTS -->
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Preferred Job Role</label>
+
+                        <input
+                            type="text"
+                            id="preferredRole"
+                            placeholder="e.g. Web Developer, Data Analyst"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Career Interests</label>
+
+                        <input
+                            type="text"
+                            id="careerInterests"
+                            placeholder="e.g. Web Development, Python, AI"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="suggest-btn"
+                    id="summaryBtn"
+                >
+
+                    ✨ Suggest Summary
+
+                </button>
+
+            </div>
+
+
+            <!-- EDUCATION -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>🎓</span>
+
+                    <div>
+
+                        <h2>Education</h2>
+
+                        <p>
+                            Add your academic qualifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Degree</label>
+
+                        <input
+                            type="text"
+                            id="degree"
+                            placeholder="e.g. B.Sc. Computer Science"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>College / University</label>
+
+                        <input
+                            type="text"
+                            id="college"
+                            placeholder="College name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Graduation Year</label>
+
+                        <input
+                            type="text"
+                            id="graduationYear"
+                            placeholder="e.g. 2027"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>CGPA / Percentage</label>
+
+                        <input
+                            type="text"
+                            id="cgpa"
+                            placeholder="e.g. 8.64 CGPA"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>💻</span>
+
+                    <div>
+
+                        <h2>Skills</h2>
+
+                        <p>
+                            Add your technical and professional skills.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Technical Skills</label>
+
+                    <input
+                        type="text"
+                        id="technicalSkills"
+                        placeholder="e.g. Python, Java, HTML, CSS, JavaScript, SQL"
+                    >
+
+                    <small>
+                        Separate skills using commas.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Tools & Technologies</label>
+
+                    <input
+                        type="text"
+                        id="tools"
+                        placeholder="e.g. Git, GitHub, VS Code, MongoDB"
+                    >
+
+                    <small>
+                        Separate skills using commas.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Soft Skills</label>
+
+                    <input
+                        type="text"
+                        id="softSkills"
+                        placeholder="e.g. Communication, Teamwork, Problem Solving"
+                    >
+
+                    <small>
+                        Separate skills using commas.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECTS -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>🚀</span>
+
+                    <div>
+
+                        <h2>Projects</h2>
+
+                        <p>
+                            Showcase projects you have built.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Project Title</label>
+
+                    <input
+                        type="text"
+                        id="projectTitle"
+                        placeholder="e.g. PlaceMentor"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Technologies Used</label>
+
+                    <input
+                        type="text"
+                        id="projectTech"
+                        placeholder="e.g. HTML, CSS, JavaScript"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Project Description</label>
+
+                    <textarea
+                        id="projectDescription"
+                        rows="4"
+                        placeholder="Describe what your project does and what you contributed."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Project Link</label>
+
+                    <input
+                        type="url"
+                        id="projectLink"
+                        placeholder="GitHub / Live project link"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- CERTIFICATIONS -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>📜</span>
+
+                    <div>
+
+                        <h2>Certifications</h2>
+
+                        <p>
+                            Add relevant certifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Certification Name</label>
+
+                        <input
+                            type="text"
+                            id="certification"
+                            placeholder="e.g. Introduction to Cybersecurity"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Issuing Organization</label>
+
+                        <input
+                            type="text"
+                            id="certOrganization"
+                            placeholder="e.g. Cisco"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Year</label>
+
+                        <input
+                            type="text"
+                            id="certYear"
+                            placeholder="e.g. 2026"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>💼</span>
+
+                    <div>
+
+                        <h2>Experience / Internship</h2>
+
+                        <p>
+                            Add internships, work experience or training.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Company</label>
+
+                        <input
+                            type="text"
+                            id="company"
+                            placeholder="Company name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Role</label>
+
+                        <input
+                            type="text"
+                            id="role"
+                            placeholder="e.g. Cybersecurity Intern"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Duration</label>
+
+                        <input
+                            type="text"
+                            id="experienceDuration"
+                            placeholder="e.g. June 2026 - August 2026"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Description</label>
+
+                    <textarea
+                        id="experienceDescription"
+                        rows="4"
+                        placeholder="Describe your responsibilities and achievements."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACHIEVEMENTS -->
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <span>🏆</span>
+
+                    <div>
+
+                        <h2>Achievements</h2>
+
+                        <p>
+                            Highlight awards, competitions and leadership.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <textarea
+                        id="achievements"
+                        rows="4"
+                        placeholder="Example: HOD of Quiztron at Technotsav..."
+                    ></textarea>
+
+                    <small>
+                        Add each achievement on a new line.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- GENERATE BUTTONS -->
+
+            <div class="generate-section">
+
+                <button
+                    type="button"
+                    id="generateBtn"
+                    class="generate-btn"
+                >
+
+                    ✨ Generate My Resume
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="clearBtn"
+                    class="clear-btn"
+                >
+
+                    🗑️ Clear All
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RIGHT SIDE - PREVIEW -->
+
+        <div class="preview-section">
+
+
+            <div class="preview-header">
+
+                <h2>👀 Resume Preview</h2>
+
+                <p>
+                    Your resume will appear here.
+                </p>
+
+            </div>
+
+
+            <!-- RESUME PREVIEW -->
+
+            <div id="resumePreview" class="resume-preview">
+
+                <div class="empty-preview">
+
+                    <div class="empty-icon">📄</div>
+
+                    <h3>Your resume preview will appear here</h3>
+
+                    <p>
+                        Fill in your details and click
+                        <strong>"Generate My Resume"</strong>.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEMPLATE SELECTION -->
+
+            <div class="template-section">
+
+                <h3>Choose Your Resume Style</h3>
+
+                <p>Select a design for your resume.</p>
+
+
+                <div class="template-gallery">
+
+
+                    <!-- CLASSIC TEMPLATE -->
+
+                    <button
+                        type="button"
+                        class="template-card"
+                        data-template="classic"
+                    >
+
+                        <div class="mini-resume classic-mini">
+
+                            <div class="mini-name"></div>
+                            <div class="mini-contact"></div>
+
+                            <div class="mini-heading">EDUCATION</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                            <div class="mini-heading">SKILLS</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                        </div>
+
+                        <strong>Classic</strong>
+
+                        <small>Clean & Professional</small>
+
+                    </button>
+
+
+                    <!-- MODERN TEMPLATE -->
+
+                    <button
+                        type="button"
+                        class="template-card active"
+                        data-template="modern"
+                    >
+
+                        <div class="mini-resume modern-mini">
+
+                            <div class="mini-modern-header">
+
+                                <div class="mini-name"></div>
+                                <div class="mini-contact"></div>
+
+                            </div>
+
+                            <div class="mini-heading">EXPERIENCE</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                            <div class="mini-heading">PROJECTS</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                        </div>
+
+                        <strong>Modern</strong>
+
+                        <small>Creative & Stylish</small>
+
+                    </button>
+
+
+                    <!-- MINIMAL TEMPLATE -->
+
+                    <button
+                        type="button"
+                        class="template-card"
+                        data-template="minimal"
+                    >
+
+                        <div class="mini-resume minimal-mini">
+
+                            <div class="mini-name"></div>
+                            <div class="mini-contact"></div>
+
+                            <div class="mini-heading">PROFILE</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                            <div class="mini-heading">EDUCATION</div>
+
+                            <div class="mini-line"></div>
+                            <div class="mini-line short"></div>
+
+                        </div>
+
+                        <strong>Minimal</strong>
+
+                        <small>Simple & Elegant</small>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- PREVIEW ACTIONS -->
+
+            <div
+                class="preview-actions"
+                id="previewActions"
+            >
+
+                <button
+                    type="button"
+                    id="printBtn"
+                    class="print-btn"
+                >
+
+                    🖨️ Print / Save as PDF
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="newResumeBtn"
+                    class="new-btn"
+                >
+
+                    🔄 Create New Resume
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- BACK TO DASHBOARD -->
+
+    <div class="back-section">
+
+        <button
+            type="button"
+            onclick="window.location.href='dashboard.html'"
+        >
+
+            🏠 Back to Dashboard
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="resume.js"></script>
+
+</body>
+
+</html>

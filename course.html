@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Recommendation | PlaceMentor</title>
+    <link rel="stylesheet" href="course.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="page-header">
+        <div>
+            <span class="eyebrow">LEARN • GROW • SUCCEED</span>
+            <h1>Course Recommendations</h1>
+            <p>Discover courses and build the skills you need for your placement journey.</p>
+        </div>
+        <a href="dashboard.html" class="back-btn">← Dashboard</a>
+    </header>
+<section class="topic-card">
+    <div class="topic-info">
+        <span class="eyebrow">PERSONALIZE YOUR LEARNING</span>
+        <h2>What do you want to learn?</h2>
+        <p>Select all the topics that interest you.</p>
+    </div>
+
+    <div class="interest-grid" id="interestGrid">
+
+        <label class="interest-option">
+            <input type="checkbox" value="Programming">
+            <span>💻 Programming</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Web Development">
+            <span>🌐 Web Development</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="DSA">
+            <span>🧩 Data Structures & Algorithms</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="DBMS">
+            <span>🗄️ Database Management</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Networks">
+            <span>🌐 Computer Networks</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="OS">
+            <span>⚙️ Operating Systems</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Aptitude">
+            <span>🧠 Aptitude</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Communication">
+            <span>🗣️ Communication Skills</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Resume">
+            <span>📄 Resume Building</span>
+        </label>
+
+        <label class="interest-option">
+            <input type="checkbox" value="Interview">
+            <span>🎯 Interview Preparation</span>
+        </label>
+
+    </div>
+
+    <div class="interest-actions">
+        <button type="button" id="saveInterestsBtn">
+            Save My Interests
+        </button>
+    </div>
+
+    <p id="interestMessage"></p>
+</section>
+
+    <section class="ai-card" id="aiCard">
+        <div class="ai-icon">✨</div>
+        <div>
+            <h3>Your Learning Recommendation</h3>
+            <p id="aiRecommendation">Choose a topic to get a personalized learning recommendation.</p>
+        </div>
+    </section>
+
+    <section class="recommendation-section" id="recommendationSection">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">HANDPICKED FOR YOU</span>
+                <h2>Recommended Courses</h2>
+                <p>Start learning with these useful courses.</p>
+            </div>
+        </div>
+        <div id="courseContainer" class="course-container"></div>
+
+        <div class="section-heading sub-heading">
+            <div>
+                <span class="eyebrow">GET RECOGNIZED</span>
+                <h2>Recommended Certifications</h2>
+                <p>Earn certificates to strengthen your profile.</p>
+            </div>
+        </div>
+        <div id="certificationContainer" class="certification-container"></div>
+
+        <div class="section-heading sub-heading">
+            <div>
+                <span class="eyebrow">BUILD YOUR FOUNDATION</span>
+                <h2>Skills You Should Learn</h2>
+            </div>
+        </div>
+        <div id="skillsContainer" class="skills-container"></div>
+
+        <div class="section-heading sub-heading">
+            <div>
+                <span class="eyebrow">LEARN BY DOING</span>
+                <h2>Practice Project</h2>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">💡</div>
+            <div id="projectContainer" class="project-card-content"></div>
+        </div>
+
+    </section>
+
+    <section class="progress-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+                <h2>Learning Progress</h2>
+                <p>Track the courses you have completed.</p>
+            </div>
+            <span class="progress-icon">📈</span>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+                <span>HTML</span>
+                <span id="htmlPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="htmlProgress" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+               <span>Programming</span>
+<span id="javaPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="javaProgress" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="progress-item">
+            <div class="progress-label">
+                <span>DBMS</span>
+                <span id="dbmsPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="dbmsProgress" class="progress-fill"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <p>Keep learning, keep growing. Your placement journey starts here! 💗</p>
+        <a href="dashboard.html">Back to Dashboard</a>
+    </footer>
+
+</div>
+
+<script src="course.js"></script>
+</body>
+</html>

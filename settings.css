@@ -1,0 +1,311 @@
+
+/* =====================================
+   PLACEMENTOR SETTINGS PAGE
+   Coffee Brown & Cream Theme
+===================================== */
+
+.settings-page {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    padding: 35px 40px 60px;
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            rgba(247, 243, 240, 0.35),
+            rgba(247, 243, 240, 0.35)
+        ),
+        url("images/profile-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Page Heading */
+.settings-heading {
+    margin-bottom: 30px;
+}
+
+.settings-heading h1 {
+    color: #4E342E;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
+
+.settings-heading p {
+    color: #795548;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Settings Cards */
+.settings-card {
+    max-width: 950px;
+    margin: 0 auto 22px;
+    padding: 25px 30px;
+
+    box-sizing: border-box;
+
+    background: rgba(255, 252, 249, 0.96);
+    border: 1px solid #E8D8CE;
+    border-radius: 17px;
+
+    box-shadow: 0 7px 22px rgba(78, 52, 46, 0.09);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(78, 52, 46, 0.13);
+}
+
+/* Card Heading */
+.settings-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.settings-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #F1E4DD;
+    border-radius: 13px;
+
+    font-size: 23px;
+}
+
+.settings-card-heading h2 {
+    color: #4E342E;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px;
+}
+
+.settings-card-heading p {
+    color: #8D7165;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Account Information */
+.settings-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    padding: 18px 0;
+    border-top: 1px solid #E8D8CE;
+}
+
+.settings-info label {
+    display: block;
+    color: #8D7165;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.settings-info p {
+    color: #4E342E;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Setting Options */
+.setting-option,
+.security-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 17px 0;
+    border-top: 1px solid #EFE3DC;
+}
+
+.setting-option h3,
+.security-option h3 {
+    color: #4E342E;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
+
+.setting-option p,
+.security-option p {
+    color: #8D7165;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Links */
+.settings-link {
+    display: inline-block;
+    color: #795548;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: color 0.3s ease;
+}
+
+.settings-link:hover {
+    color: #A67C6D;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+
+    width: 48px;
+    height: 25px;
+    min-width: 48px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+
+    inset: 0;
+
+    background: #D8C4B8;
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: "";
+
+    width: 19px;
+    height: 19px;
+
+    left: 3px;
+    bottom: 3px;
+
+    background: #FFFFFF;
+    border-radius: 50%;
+
+    transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #795548;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(23px);
+}
+
+.toggle-switch input:focus-visible + .toggle-slider {
+    outline: 2px solid #A67C6D;
+    outline-offset: 3px;
+}
+
+/* Save Preferences */
+.settings-save {
+    max-width: 950px;
+    margin: 30px auto 0;
+    text-align: right;
+}
+
+#saveSettingsBtn {
+    padding: 13px 27px;
+
+    background: #6D4C41;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#saveSettingsBtn:hover {
+    background: #4E342E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(78, 52, 46, 0.18);
+}
+
+#settingsMessage {
+    color: #6D4C41;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .settings-page {
+        padding: 25px 18px 45px;
+        background-attachment: scroll;
+    }
+
+    .settings-card {
+        padding: 22px 20px;
+    }
+
+    .settings-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .settings-heading h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .settings-card {
+        padding: 20px 16px;
+    }
+
+    .settings-card-heading h2 {
+        font-size: 16px;
+    }
+
+    .setting-option,
+    .security-option {
+        gap: 12px;
+    }
+
+    .setting-option p,
+    .security-option p {
+        max-width: 220px;
+    }
+
+    .settings-save {
+        text-align: center;
+    }
+
+    #saveSettingsBtn {
+        width: 100%;
+    }
+}

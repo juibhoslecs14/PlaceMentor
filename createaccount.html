@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | PlaceMentor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="signup-page">
+
+    <div class="signup-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-panel">
+
+            <img
+                src="images/logo.png"
+                class="left-logo"
+                alt="PlaceMentor Logo"
+            >
+
+            <h1>PlaceMentor</h1>
+
+            <p class="tagline">
+                Prepare. Practice.<br>
+                Perform. Get Placed.
+            </p>
+
+            <div class="quote-box">
+
+                <h2>"</h2>
+
+                <p>
+                    The best preparation for tomorrow
+                    is doing your best today.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right-panel">
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Join PlaceMentor and begin your placement journey.
+            </p>
+
+
+            <!-- SIGNUP FORM -->
+
+            <form id="signupForm">
+
+                <!-- FULL NAME -->
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Full Name"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <!-- EMAIL -->
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <!-- COLLEGE -->
+
+                <input
+                    type="text"
+                    id="college"
+                    placeholder="College Name"
+                >
+
+
+                <!-- COURSE / YEAR -->
+
+                <select id="course">
+
+                    <option value="">Select Year</option>
+
+                    <option value="FY BSc CS">
+                        FY BSc CS
+                    </option>
+
+                    <option value="SY BSc CS">
+                        SY BSc CS
+                    </option>
+
+                    <option value="TY BSc CS">
+                        TY BSc CS
+                    </option>
+
+                </select>
+
+
+                <!-- DEPARTMENT -->
+
+                <input
+                    type="text"
+                    id="department"
+                    placeholder="Department"
+                >
+
+
+                <!-- PASSWORD -->
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create Password"
+                    autocomplete="new-password"
+                    required
+                >
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    autocomplete="new-password"
+                    required
+                >
+
+
+                <!-- SHOW PASSWORD -->
+
+                <div
+                    class="show-password-option"
+                    style="
+                        display: flex;
+                        align-items: center;
+                        gap: 9px;
+                        margin: 5px 0 18px;
+                    "
+                >
+
+                    <input
+                        type="checkbox"
+                        id="togglePassword"
+                        style="
+                            width: 16px !important;
+                            height: 16px !important;
+                            padding: 0 !important;
+                            margin: 0 !important;
+                            box-shadow: none !important;
+                            flex-shrink: 0;
+                            cursor: pointer;
+                        "
+                    >
+
+                    <label
+                        for="togglePassword"
+                        style="
+                            font-size: 13px;
+                            cursor: pointer;
+                            margin: 0;
+                        "
+                    >
+                        Show Password
+                    </label>
+
+                </div>
+
+
+                <!-- CREATE ACCOUNT BUTTON -->
+
+                <button
+                    type="submit"
+                    class="signup-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- LOGIN LINK -->
+
+            <p class="login-link">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SIGNUP JAVASCRIPT -->
+
+    <script src="createaccount.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | PlaceMentor</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="profile.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img src="images/logo.png" class="logo" alt="PlaceMentor Logo">
+                <h2>PlaceMentor</h2>
+            </div>
+
+            <p class="sidebar-label">MAIN MENU</p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+                    <a href="dashboard.html">🏠 Home</a>
+                </li>
+
+                <li>
+                    <a href="aimock.html">🤖 AI Mock Interview</a>
+                </li>
+
+                <li>
+                    <a href="quiz.html">🧠 Quizzes</a>
+                </li>
+
+                <li>
+                    <a href="course.html">📚 Course Recommendation</a>
+                </li>
+
+                <li>
+                    <a href="resume.html">📄 Resume Builder</a>
+                </li>
+
+                <li class="active">
+                    <a href="profile.html">👤 Profile</a>
+                </li>
+
+                <li>
+                    <a href="settings.html">⚙️ Settings</a>
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP NAVIGATION -->
+            <nav class="top-nav">
+
+                <div class="breadcrumb">
+                    <span>PlaceMentor</span>
+                    <span>›</span>
+                    <strong>My Profile</strong>
+                </div>
+
+                <div class="nav-links">
+                    <a href="dashboard.html">Home</a>
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="about.html">About</a>
+                </div>
+
+            </nav>
+
+
+            <!-- PROFILE PAGE -->
+            <section class="profile-page">
+
+                <div class="profile-heading">
+                    <h1>👤 My Profile</h1>
+                    <p>Manage your personal information and account details.</p>
+                </div>
+
+
+                <!-- PROFILE CARD -->
+                <div class="profile-card">
+
+                    <div class="profile-avatar">
+                        👤
+                    </div>
+
+                    <div class="profile-details">
+
+                        <h2 id="profileName">Loading...</h2>
+
+                        <p class="profile-email" id="profileEmail">
+                            Loading...
+                        </p>
+
+                        <hr>
+
+                        <div class="profile-info">
+
+                            <div class="info-item">
+                                <strong>Full Name</strong>
+                                <span id="nameValue">Loading...</span>
+                            </div>
+
+                            <div class="info-item">
+                                <strong>Email</strong>
+                                <span id="emailValue">Loading...</span>
+                            </div>
+
+                            <div class="info-item">
+                                <strong>College</strong>
+                                <span id="collegeValue">Loading...</span>
+                            </div>
+
+                            <div class="info-item">
+                                <strong>Course</strong>
+                                <span id="courseValue">Loading...</span>
+                            </div>
+
+                            <div class="info-item">
+                                <strong>Department</strong>
+                                <span id="departmentValue">Loading...</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTION BUTTONS -->
+                        <div class="profile-actions">
+
+                            <button class="start-btn" type="button"
+                                id="editProfileBtn" onclick="showEditForm()">
+                                ✎ Edit Profile
+                            </button>
+
+                            <button class="start-btn logout-btn" type="button"
+                                onclick="logout()">
+                                Logout
+                            </button>
+
+                        </div>
+
+
+                        <!-- EDIT PROFILE FORM -->
+                        <div id="editProfileForm" style="display: none;">
+
+                            <hr>
+
+                            <h3>Edit Your Details</h3>
+
+                            <input type="text" id="editName"
+                                placeholder="Full Name" required>
+
+                            <input type="text" id="editCollege"
+                                placeholder="College">
+
+                            <input type="text" id="editCourse"
+                                placeholder="Course">
+
+                            <input type="text" id="editDepartment"
+                                placeholder="Department">
+
+                            <div class="profile-actions">
+
+                                <button class="start-btn" type="button"
+                                    onclick="saveProfile()">
+                                    Save Changes
+                                </button>
+
+                                <button class="start-btn cancel-btn" type="button"
+                                    onclick="hideEditForm()">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="profile.js"></script>
+
+</body>
+</html>
