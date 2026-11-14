@@ -1,5 +1,5 @@
 
-const Resume = require("../models/resume");
+const Resume = require("../models/Resume");
 
 // Save or update the logged-in user's resume
 const saveResume = async (req, res) => {
