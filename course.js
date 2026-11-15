@@ -3,7 +3,7 @@
    PLACEMENTOR COURSE RECOMMENDATIONS
 ===================================== */
 
-const API_URL = "http://localhost:5000/api/courses";
+const API_URL = "/api/courses";
 const token = localStorage.getItem("token");
 
 const recommendationData = {
@@ -305,6 +305,7 @@ const recommendationData = {
             {
                 title: "Business Communication",
                 platform: "Coursera",
+
                 description: "Improve professional writing, teamwork and workplace communication.",
                 level: "Intermediate",
                 duration: "4 Weeks",
@@ -408,6 +409,7 @@ const recommendationData = {
 
 let completedCourses = [];
 let selectedTopics = [];
+
 
 // Load saved course progress from MongoDB
 async function loadCourseProgress() {
@@ -519,7 +521,7 @@ async function saveLearningInterests() {
         saveButton.textContent = "Saving...";
 
         const response = await fetch(
-            "http://localhost:5000/api/learning-interests",
+            "/api/learning-interests",
             {
                 method: "PUT",
                 headers: {
@@ -855,347 +857,80 @@ function updateProgressBars() {
     });
 }
 
+/* =====================================
+   RENDER ALL RECOMMENDATIONS
+===================================== */
 
-// Display recommendations for ALL selected interests
 function renderRecommendations(topics) {
 
-    const containers = [
-        "courseContainer",
-        "certificationContainer",
-        "skillsContainer",
-        "projectContainer"
-    ];
-
-    containers.forEach(id => {
-        const container = document.getElementById(id);
-        if (container) container.innerHTML = "";
-    });
-
+    const courseContainer = document.getElementById("courseContainer");
+    const certificationContainer = document.getElementById("certificationContainer");
+    const skillsContainer = document.getElementById("skillsContainer");
+    const projectContainer = document.getElementById("projectContainer");
     const aiRecommendation = document.getElementById("aiRecommendation");
 
+    // Clear previous recommendations
+    if (courseContainer) courseContainer.innerHTML = "";
+    if (certificationContainer) certificationContainer.innerHTML = "";
+    if (skillsContainer) skillsContainer.innerHTML = "";
+    if (projectContainer) projectContainer.innerHTML = "";
+
+    // Display message when no interests are selected
     if (!topics || topics.length === 0) {
-        aiRecommendation.textContent =
-            "Select your learning interests above and save them to see your personalized recommendations.";
+
+        if (aiRecommendation) {
+            aiRecommendation.textContent =
+                "Select your learning interests above to receive personalized course recommendations.";
+        }
 
         return;
     }
 
-    const messages = [];
-
+    // Display recommendations for every selected topic
     topics.forEach((topic, index) => {
 
-        const data = recommendationData[topic];
-        if (!data) return;
+        if (!recommendationData[topic]) return;
 
-        messages.push(data.aiMessage);
+        if (aiRecommendation) {
+            aiRecommendation.textContent =
+                "Your personalized learning roadmap is ready! Explore the recommended courses, certifications, skills and projects below.";
+        }
 
         displayCourses(topic, index === 0);
         displayCertifications(topic, index === 0);
         displaySkills(topic, index === 0);
         displayProject(topic, index === 0);
     });
-
-    aiRecommendation.textContent = messages.join(" ");
 }
 
 
-// Save button event
-const saveInterestsButton = document.getElementById("saveInterestsBtn");
+/* =====================================
+   INITIALIZE COURSE RECOMMENDATION PAGE
+===================================== */
 
-if (saveInterestsButton) {
-    saveInterestsButton.addEventListener("click", saveLearningInterests);
-}
-
-
-// Initial page setup
 async function initializeCoursePage() {
+
+    // Load completed courses first
     await loadCourseProgress();
+
+    // Load saved interests and display recommendations
     await loadLearningInterests();
 }
 
+
+/* =====================================
+   SAVE BUTTON EVENT LISTENER
+===================================== */
+
+const saveInterestsBtn = document.getElementById("saveInterestsBtn");
+
+if (saveInterestsBtn) {
+    saveInterestsBtn.addEventListener("click", saveLearningInterests);
+}
+
+
+/* =====================================
+   START COURSE PAGE
+===================================== */
+
 initializeCoursePage();
-
-
-
-// Save a completed course
-async function markCourseComplete(courseTitle, platform) {
-    const alreadyCompleted = completedCourses.some(course =>
-        course.courseTitle === courseTitle &&
-        course.topic === currentTopic
-    );
-
-    if (alreadyCompleted) {
-        alert("You have already marked this course as completed!");
-        return;
-    }
-
-    const newCourse = {
-        topic: currentTopic,
-        courseTitle: courseTitle,
-        platform: platform
-    };
-
-    if (!token) {
-        alert("Please log in to save your course progress.");
-        return;
-    }
-
-    try {
-        const response = await fetch(`${API_URL}/complete`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(newCourse)
-        });
-
-        if (!response.ok) {
-            throw new Error("Could not save course progress");
-        }
-
-        completedCourses.push(newCourse);
-
-        displayCourses(currentTopic);
-        updateProgressBars();
-
-        alert("Course marked as completed! Great work 🎉");
-
-    } catch (error) {
-        console.error(error);
-        alert("Unable to save your progress. Please check your backend connection.");
-    }
-}
-
-
-// Display recommended courses
-function displayCourses(topic) {
-    const container = document.getElementById("courseContainer");
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    const courses = recommendationData[topic].courses;
-
-    courses.forEach(course => {
-        const isCompleted = completedCourses.some(item =>
-            item.topic === topic &&
-            item.courseTitle === course.title
-        );
-
-        const card = document.createElement("div");
-        card.className = "course-card";
-
-        const image = document.createElement("img");
-        image.className = "course-image";
-        image.src = course.image;
-        image.alt = course.title;
-        image.loading = "lazy";
-
-        image.onerror = function () {
-            this.style.display = "none";
-        };
-
-        const content = document.createElement("div");
-        content.className = "course-content";
-
-        const platform = document.createElement("span");
-        platform.className = "course-platform";
-        platform.textContent = course.platform;
-
-        const title = document.createElement("h3");
-        title.textContent = course.title;
-
-        const description = document.createElement("p");
-        description.className = "course-description";
-        description.textContent = course.description;
-
-        const details = document.createElement("div");
-        details.className = "course-details";
-
-        const level = document.createElement("span");
-        level.textContent = "📊 " + course.level;
-
-        const duration = document.createElement("span");
-        duration.textContent = "⏱ " + course.duration;
-
-        details.append(level, duration);
-
-        const actions = document.createElement("div");
-        actions.className = "course-actions";
-
-        const startButton = document.createElement("a");
-        startButton.className = "start-course-btn";
-        startButton.href = course.link;
-        startButton.target = "_blank";
-        startButton.rel = "noopener noreferrer";
-        startButton.textContent = "Start Learning ↗";
-
-        const completeButton = document.createElement("button");
-        completeButton.className = "complete-course-btn";
-        completeButton.textContent = isCompleted ? "✓ Completed" : "Mark Complete";
-
-        if (isCompleted) {
-            completeButton.classList.add("completed");
-        }
-
-        completeButton.addEventListener("click", () => {
-            markCourseComplete(course.title, course.platform);
-        });
-
-        actions.append(startButton, completeButton);
-
-        content.append(platform, title, description, details, actions);
-        card.append(image, content);
-        container.appendChild(card);
-    });
-}
-
-
-// Display recommended certifications
-function displayCertifications(topic) {
-    const container = document.getElementById("certificationContainer");
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    recommendationData[topic].certifications.forEach(cert => {
-        const card = document.createElement("div");
-        card.className = "certification-card";
-
-        const icon = document.createElement("div");
-        icon.className = "certification-icon";
-        icon.textContent = cert[2];
-
-        const content = document.createElement("div");
-
-        const title = document.createElement("h3");
-        title.textContent = cert[0];
-
-        const platform = document.createElement("p");
-        platform.textContent = cert[1];
-
-        const link = document.createElement("a");
-        link.href = cert[3];
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "Explore certification ↗";
-        link.style.cssText = "display:inline-block;margin-top:8px;color:#9b7653;font-size:12px;text-decoration:none;font-weight:700;";
-
-        content.append(title, platform, link);
-        card.append(icon, content);
-        container.appendChild(card);
-    });
-}
-
-
-// Display skills
-function displaySkills(topic) {
-    const container = document.getElementById("skillsContainer");
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    recommendationData[topic].skills.forEach(skill => {
-        const tag = document.createElement("span");
-        tag.className = "skill-tag";
-        tag.textContent = skill;
-        container.appendChild(tag);
-    });
-}
-
-
-// Display practice project
-function displayProject(topic) {
-    const container = document.getElementById("projectContainer");
-    if (!container) return;
-
-    const project = recommendationData[topic].project;
-
-    container.innerHTML = "";
-
-    const title = document.createElement("h3");
-    title.textContent = project[0];
-
-    const description = document.createElement("p");
-    description.textContent = project[1];
-
-    container.append(title, description);
-}
-
-
-// Update the three learning progress bars
-function updateProgressBars() {
-    const progressTopics = [
-        {
-            topic: "Web Development",
-            courseNames: ["HTML and CSS Fundamentals", "JavaScript for Beginners", "Responsive Web Design"],
-            percentId: "htmlPercent",
-            barId: "htmlProgress"
-        },
-        {
-            topic: "Programming",
-            courseNames: ["Python for Beginners", "Java Programming", "C Programming"],
-            percentId: "javaPercent",
-            barId: "javaProgress"
-        },
-        {
-            topic: "DBMS",
-            courseNames: ["SQL for Beginners", "Database Management", "Advanced SQL Practice"],
-            percentId: "dbmsPercent",
-            barId: "dbmsProgress"
-        }
-    ];
-
-    progressTopics.forEach(item => {
-        const completed = completedCourses.filter(course =>
-            course.topic === item.topic &&
-            item.courseNames.includes(course.courseTitle)
-        ).length;
-
-        const percentage = Math.round(
-            (completed / item.courseNames.length) * 100
-        );
-
-        const percentElement = document.getElementById(item.percentId);
-        const barElement = document.getElementById(item.barId);
-
-        if (percentElement) {
-            percentElement.textContent = percentage + "%";
-        }
-
-        if (barElement) {
-            barElement.style.width = percentage + "%";
-        }
-    });
-}
-
-
-// Show selected topic recommendations
-function getRecommendation() {
-    const select = document.getElementById("topicSelect");
-    if (!select) return;
-
-    currentTopic = select.value;
-
-    const data = recommendationData[currentTopic];
-
-    if (!data) return;
-
-    document.getElementById("aiRecommendation").textContent =
-        data.aiMessage;
-
-    displayCourses(currentTopic);
-    displayCertifications(currentTopic);
-    displaySkills(currentTopic);
-    displayProject(currentTopic);
-}
-
-
-// Button event
-document.getElementById("findBtn").addEventListener("click", getRecommendation);
-
-
-// Initial page load
-getRecommendation();
-loadCourseProgress();

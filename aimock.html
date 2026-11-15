@@ -24,76 +24,73 @@
         </p>
 
         <!-- Interview Setup -->
-        ```html
-<!-- Interview Setup -->
-<div class="setup-card" id="setupCard">
+        <div class="setup-card" id="setupCard">
 
-    <h2>Interview Setup</h2>
+            <h2>Interview Setup</h2>
 
-    <div class="setup-row">
+            <div class="setup-row">
 
-        <!-- Interview Type -->
-        <div class="setup-group">
-            <label for="type">Interview Type</label>
+                <!-- Interview Type -->
+                <div class="setup-group">
+                    <label for="type">Interview Type</label>
 
-            <select id="type">
-                <option value="HR Interview">HR Interview</option>
-                <option value="Technical Interview">Technical Interview</option>
-                <option value="Mixed Interview">Mixed Interview</option>
-            </select>
+                    <select id="type">
+                        <option value="HR Interview">HR Interview</option>
+                        <option value="Technical Interview">Technical Interview</option>
+                        <option value="Mixed Interview">Mixed Interview</option>
+                    </select>
+                </div>
+
+                <!-- Job Role -->
+                <div class="setup-group">
+                    <label for="role">Job Role</label>
+
+                    <select id="role">
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="Python Developer">Python Developer</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Software Developer">Software Developer</option>
+                    </select>
+                </div>
+
+                <!-- Difficulty -->
+                <div class="setup-group">
+                    <label for="difficulty">Difficulty</label>
+
+                    <select id="difficulty">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- Interview Mode -->
+            <div class="setup-row">
+
+                <div class="setup-group">
+                    <label for="interviewMode">Interview Mode</label>
+
+                    <select id="interviewMode">
+                        <option value="practice">Practice Mode – No Time Limit</option>
+                        <option value="timed">Timed Mode – 5 Minutes</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button id="startBtn" class="start-btn">
+                🚀 Start Interview
+            </button>
+
         </div>
 
-        <!-- Job Role -->
-        <div class="setup-group">
-            <label for="role">Job Role</label>
-
-            <select id="role">
-                <option value="Java Developer">Java Developer</option>
-                <option value="Python Developer">Python Developer</option>
-                <option value="Web Developer">Web Developer</option>
-                <option value="Data Analyst">Data Analyst</option>
-                <option value="Software Developer">Software Developer</option>
-            </select>
-        </div>
-
-        <!-- Difficulty -->
-        <div class="setup-group">
-            <label for="difficulty">Difficulty</label>
-
-            <select id="difficulty">
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
-            </select>
-        </div>
-
-    </div>
-
-    <!-- Interview Mode -->
-    <div class="setup-row">
-
-        <div class="setup-group">
-            <label for="interviewMode">Interview Mode</label>
-
-            <select id="interviewMode">
-                <option value="practice">Practice Mode – No Time Limit</option>
-                <option value="timed">Timed Mode – 5 Minutes</option>
-            </select>
-        </div>
-
-    </div>
-
-    <button id="startBtn" class="start-btn">
-        🚀 Start Interview
-    </button>
-
-</div>
-```
         <!-- Interview Timer -->
         <div class="timer" id="timer" style="display:none;">
             ⏱ Time Left : <span id="time">05:00</span>
         </div>
-
 
         <!-- Interview Questions -->
         <div class="question-card" id="questionCard" style="display:none;">
@@ -122,7 +119,6 @@
 
         </div>
 
-
         <!-- AI Loading Screen -->
         <div class="loading-screen" id="loadingScreen" style="display:none;">
 
@@ -140,7 +136,6 @@
             </div>
 
         </div>
-
 
         <!-- AI Interview Report -->
         <div class="feedback" id="feedback" style="display:none;">

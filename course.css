@@ -544,3 +544,68 @@ body {
     border-radius: 12px;
     margin-bottom: 15px;
 }
+
+/* =====================================
+   COURSE RECOMMENDATION FIXES
+===================================== */
+
+/* Make topic headings occupy the full grid width */
+.topic-recommendation-heading {
+    grid-column: 1 / -1;
+    width: 100%;
+    color: #6b4938;
+    font-size: 20px;
+    margin: 25px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dfd0c2;
+}
+
+/* Certification links */
+.certification-card a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #8b674b;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.certification-card a:hover {
+    text-decoration: underline;
+}
+
+/* Project card content */
+.project-card h3 {
+    color: #4e342e;
+    font-size: 17px;
+    margin-bottom: 9px;
+}
+
+.project-card p {
+    color: #817771;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Project card spacing */
+.project-card {
+    display: block;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 22px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* Save button disabled state */
+#saveInterestsBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Mobile heading adjustment */
+@media (max-width: 650px) {
+    .topic-recommendation-heading {
+        font-size: 18px;
+    }
+}
