@@ -6,6 +6,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     const token = localStorage.getItem("token");
+    let currentUserId = null;
 
     /* =====================================================
        HELPER: SAFELY READ LOCAL STORAGE
@@ -44,23 +45,46 @@ document.addEventListener("DOMContentLoaded", async () => {
        USER INFORMATION
        ===================================================== */
 
-    const currentUser = getStoredData("user", null);
+    
+/* =====================================================
+   USER INFORMATION
+   ===================================================== */
 
-    const welcomeMessage =
-        document.getElementById("welcomeMessage");
+const welcomeMessage =
+    document.getElementById("welcomeMessage");
 
-    if (welcomeMessage) {
+if (!token) {
+    window.location.href = "login.html";
+    return;
+}
 
-        if (currentUser) {
-            welcomeMessage.textContent =
-                `👋 Welcome Back, ${currentUser.name || "Student"}!`;
-        } else {
-            welcomeMessage.textContent =
-                "👋 Welcome to PlaceMentor!";
+try {
+    const response = await fetch("/api/profile", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
         }
+    });
 
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Unable to load user profile.");
+        currentUserId = data.user._id;
     }
 
+    if (welcomeMessage) {
+        welcomeMessage.textContent =
+            `👋 Welcome Back, ${data.user.name || "Student"}!`;
+    }
+
+} catch (error) {
+    console.error("Dashboard user error:", error);
+
+    if (welcomeMessage) {
+        welcomeMessage.textContent = "👋 Welcome to PlaceMentor!";
+    }
+}
 
     /* =====================================================
        QUIZ HISTORY AND STATISTICS
@@ -348,10 +372,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     ];
 
-    let goals = getStoredData(
-        "placeMentorGoals",
-        defaultGoals
-    );
+   const goalsStorageKey = `placeMentorGoals_${currentUserId}`;
+
+        let goals = getStoredData(
+          goalsStorageKey,
+            defaultGoals
+);
 
     if (!Array.isArray(goals)) {
         goals = defaultGoals;
@@ -381,10 +407,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function saveGoals() {
 
-        localStorage.setItem(
-            "placeMentorGoals",
-            JSON.stringify(goals)
-        );
+       localStorage.setItem(
+    goalsStorageKey,
+    JSON.stringify(goals)
+);
 
     }
 
@@ -604,24 +630,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     /* =====================================================
-       START PRACTISING BUTTON
-       ===================================================== */
-
-   const startButton = document.querySelector(".start-btn");
-
-if (startButton) {
-    startButton.addEventListener("click", () => {
-        window.location.href = "aimock.html";
-    });
-}s
-
-        });
-
-
-    /* =====================================================
        DASHBOARD LOADED
        ===================================================== */
 
-    console.log(
-        "PlaceMentor Dashboard loaded successfully."
-    );
+/* =====================================================
+   DASHBOARD LOADED
+   ===================================================== */
+
+console.log(
+    "PlaceMentor Dashboard loaded successfully."
+);
+
+});

@@ -194,6 +194,75 @@ async function saveSettings() {
 }
 
 
+// Change logged-in user's password
+async function changePassword() {
+
+    const form = document.getElementById("changePasswordForm");
+    const message = document.getElementById("passwordMessage");
+    const button = document.getElementById("changePasswordBtn");
+
+    const currentPassword =
+        document.getElementById("currentPassword").value;
+
+    const newPassword =
+        document.getElementById("newPassword").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    if (newPassword !== confirmPassword) {
+        message.textContent = "New passwords do not match.";
+        message.style.color = "#b42318";
+        return;
+    }
+
+    if (newPassword.length < 6) {
+        message.textContent = "Password must contain at least 6 characters.";
+        message.style.color = "#b42318";
+        return;
+    }
+
+    try {
+        button.disabled = true;
+        button.textContent = "Updating...";
+
+        const response = await fetch("/api/auth/change-password", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + getToken()
+            },
+            body: JSON.stringify({
+                currentPassword,
+                newPassword
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Unable to change password.");
+        }
+
+        message.textContent = data.message || "Password changed successfully!";
+        message.style.color = "#16803c";
+
+        form.reset();
+
+    } catch (error) {
+        console.error("Change password error:", error);
+
+        message.textContent = error.message;
+        message.style.color = "#b42318";
+
+    } finally {
+        button.disabled = false;
+        button.textContent = "Change Password";
+    }
+}
+
+
+
 // Initialize Settings Page
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
@@ -41,6 +42,17 @@ const userSchema = new mongoose.Schema(
             trim: true
         },
 
+        // Password reset fields
+        resetPasswordToken: {
+            type: String,
+            default: null
+        },
+
+        resetPasswordExpires: {
+            type: Date,
+            default: null
+        },
+
         // User preferences
         preferences: {
             comfortableLayout: {
@@ -58,7 +70,6 @@ const userSchema = new mongoose.Schema(
                 default: false
             },
 
-            // Multiple learning interests selected by the user
             learningInterests: {
                 type: [String],
                 default: []

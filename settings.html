@@ -86,72 +86,69 @@
             </nav>
 
 
-            <!-- SETTINGS PAGE -->
-            <section class="settings-page">
+            
+<!-- SECURITY SETTINGS -->
+<div class="settings-card">
 
-                <div class="settings-heading">
-                    <h1>⚙️ Settings</h1>
-                    <p>Customize your PlaceMentor experience.</p>
-                </div>
+    <div class="settings-card-heading">
+        <span class="settings-icon">🔒</span>
 
+        <div>
+            <h2>Security</h2>
+            <p>Keep your account safe and secure.</p>
+        </div>
+    </div>
 
-                <!-- ACCOUNT INFORMATION -->
-                <div class="settings-card">
+    <div class="security-option">
+        <div>
+            <h3>Change Password</h3>
+            <p>Update your password to keep your account secure.</p>
+        </div>
+    </div>
 
-                    <div class="settings-card-heading">
-                        <span class="settings-icon">👤</span>
+    <form id="changePasswordForm" class="password-form">
 
-                        <div>
-                            <h2>Account Information</h2>
-                            <p>View your registered account details.</p>
-                        </div>
-                    </div>
+        <div>
+            <label for="currentPassword">Current Password</label>
+            <input
+                type="password"
+                id="currentPassword"
+                placeholder="Enter current password"
+                required
+            >
+        </div>
 
-                    <div class="settings-info">
-                        <div>
-                            <label>Full Name</label>
-                            <p id="settingsName">Loading...</p>
-                        </div>
+        <div>
+            <label for="newPassword">New Password</label>
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="Enter new password"
+                minlength="6"
+                required
+            >
+        </div>
 
-                        <div>
-                            <label>Email Address</label>
-                            <p id="settingsEmail">Loading...</p>
-                        </div>
-                    </div>
+        <div>
+            <label for="confirmPassword">Confirm New Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm new password"
+                minlength="6"
+                required
+            >
+        </div>
 
-                    <a href="profile.html" class="settings-link">
-                        Manage Profile →
-                    </a>
+        <button type="submit" id="changePasswordBtn">
+            Change Password
+        </button>
 
-                </div>
+        <p id="passwordMessage"></p>
 
+    </form>
 
-                <!-- APPEARANCE SETTINGS -->
-                <div class="settings-card">
-
-                    <div class="settings-card-heading">
-                        <span class="settings-icon">🎨</span>
-
-                        <div>
-                            <h2>Appearance</h2>
-                            <p>Choose how your page looks.</p>
-                        </div>
-                    </div>
-
-                    <div class="setting-option">
-                        <div>
-                            <h3>Comfortable Layout</h3>
-                            <p>Use a spacious layout with comfortable spacing.</p>
-                        </div>
-
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="comfortableLayout">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-
-                </div>
-
+</div>
 
                 <!-- NOTIFICATION SETTINGS -->
                 <div class="settings-card">

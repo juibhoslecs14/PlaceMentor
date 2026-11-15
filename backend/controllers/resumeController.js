@@ -17,9 +17,9 @@ const saveResume = async (req, res) => {
             github: req.body.github,
 
             summary: req.body.summary,
-preferredRole: req.body.preferredRole,
-careerInterests: req.body.careerInterests,
-degree: req.body.degree,
+            preferredRole: req.body.preferredRole,
+            careerInterests: req.body.careerInterests,
+            degree: req.body.degree,
 
             college: req.body.college,
             graduationYear: req.body.graduationYear,

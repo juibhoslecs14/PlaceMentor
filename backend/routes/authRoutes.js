@@ -3,11 +3,13 @@ const express = require("express");
 
 const {
     registerUser,
-    loginUser
+    loginUser,
+    changePassword,
+    forgotPassword,
+    resetPassword
 } = require("../controllers/authController");
 
 const protect = require("../middleware/authMiddleware");
-
 const User = require("../models/User");
 
 const router = express.Router();
@@ -17,6 +19,15 @@ router.post("/register", registerUser);
 
 // LOGIN
 router.post("/login", loginUser);
+
+// CHANGE PASSWORD
+router.put("/change-password", protect, changePassword);
+
+// FORGOT PASSWORD
+router.post("/forgot-password", forgotPassword);
+
+// RESET PASSWORD
+router.post("/reset-password", resetPassword);
 
 // PROTECTED PROFILE ROUTE
 router.get("/profile", protect, async (req, res) => {
