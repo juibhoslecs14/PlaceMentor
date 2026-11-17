@@ -1,23 +1,134 @@
 
 require("dotenv").config();
 
-const evaluateInterview = async (req, res) => {
-    try {
-        // Check Gemini API key
-        if (!process.env.GEMINI_API_KEY) {
-            return res.status(500).json({
-                message: "Gemini API key is missing. Check your .env file."
-            });
+/* =========================================================
+   BACKUP RULE-BASED INTERVIEW EVALUATOR
+   ========================================================= */
+
+function evaluateWithoutAI(answers) {
+
+    const stopWords = new Set([
+        "what", "when", "where", "which", "while", "with",
+        "that", "this", "from", "have", "your", "does",
+        "explain", "difference", "between", "about", "into",
+        "their", "there", "they", "them", "then", "than",
+        "used", "using", "purpose", "would", "could", "should"
+    ]);
+
+    const questionEvaluations = answers.map((item, index) => {
+
+        const question = String(item.question || "");
+        const answer = String(item.answer || "").trim();
+
+        if (!answer) {
+            return {
+                questionNumber: index + 1,
+                score: 0,
+                feedback: "No answer provided. Try to attempt every question."
+            };
         }
 
-        // Import Gemini SDK
-        const { GoogleGenAI } = await import("@google/genai");
+        const words = answer.split(/\s+/).filter(Boolean);
 
-        const ai = new GoogleGenAI({
-            apiKey: process.env.GEMINI_API_KEY
-        });
+        const questionWords = (
+            question.toLowerCase().match(/\b[a-z]{4,}\b/g) || []
+        ).filter(word => !stopWords.has(word));
 
-        // Receive interview details
+        const answerWords = new Set(
+            answer.toLowerCase().match(/\b[a-z]{4,}\b/g) || []
+        );
+
+        const matchedWords = questionWords.filter(word =>
+            answerWords.has(word)
+        ).length;
+
+        const relevance = questionWords.length
+            ? matchedWords / questionWords.length
+            : 0;
+
+        let score = 0;
+
+        if (words.length >= 5) score = 3;
+        if (words.length >= 15) score = 5;
+        if (words.length >= 30) score = 7;
+
+        score += Math.round(relevance * 3);
+        score = Math.min(10, score);
+
+        let feedback;
+
+        if (score >= 8) {
+            feedback =
+                "Good attempt. Try adding a practical example to strengthen your answer.";
+        } else if (score >= 5) {
+            feedback =
+                "Your answer has some relevant content. Improve it with more details and examples.";
+        } else {
+            feedback =
+                "Your answer needs more explanation. Include important concepts related to the question.";
+        }
+
+        return {
+            questionNumber: index + 1,
+            score,
+            feedback
+        };
+
+    });
+
+    const overallScore = Math.round(
+        questionEvaluations.reduce(
+            (total, item) => total + item.score,
+            0
+        ) / Math.max(answers.length, 1) * 10
+    );
+
+    const answered = answers.filter(item =>
+        String(item.answer || "").trim().length > 0
+    );
+
+    const averageLength = answered.length
+        ? answered.reduce(
+            (total, item) =>
+                total + item.answer.trim().split(/\s+/).length,
+            0
+        ) / answered.length
+        : 0;
+
+    const percentage = value =>
+        `${Math.round(Math.max(0, Math.min(100, value)))}%`;
+
+    return {
+        overallScore,
+
+        communication: percentage(averageLength * 2),
+
+        confidence: percentage(
+            answered.length / Math.max(answers.length, 1) * 100
+        ),
+
+        professionalism: percentage(overallScore),
+
+        clarity: percentage(averageLength * 2),
+
+        recommendation:
+            "This report was generated using the backup rule-based evaluation system because AI evaluation was temporarily unavailable. Practise explaining concepts clearly and include relevant examples.",
+
+        questionEvaluations,
+
+        evaluationSource: "rule-based"
+    };
+}
+
+
+/* =========================================================
+   AI MOCK INTERVIEW EVALUATION
+   ========================================================= */
+
+const evaluateInterview = async (req, res) => {
+
+    try {
+
         const {
             interviewType,
             jobRole,
@@ -38,6 +149,18 @@ const evaluateInterview = async (req, res) => {
             });
         }
 
+        // Check Gemini API key
+        if (!process.env.GEMINI_API_KEY) {
+            throw new Error("Gemini API key is missing.");
+        }
+
+        // Import Gemini SDK
+        const { GoogleGenAI } = await import("@google/genai");
+
+        const ai = new GoogleGenAI({
+            apiKey: process.env.GEMINI_API_KEY
+        });
+
         // Prepare interview prompt
         const interviewPrompt = `
 You are an expert technical placement interviewer.
@@ -45,12 +168,14 @@ You are an expert technical placement interviewer.
 Evaluate a college student's mock interview fairly and professionally.
 
 INTERVIEW DETAILS:
+
 Interview Type: ${interviewType}
 Job Role: ${jobRole || "Software Developer"}
 Difficulty: ${difficulty}
 Interview Mode: ${interviewMode || "practice"}
 
 DIFFICULTY GUIDELINES:
+
 Easy: Focus on basic concepts and simple explanations.
 Medium: Expect good understanding and practical examples.
 Hard: Expect deeper knowledge, problem-solving and detailed explanations.
@@ -61,7 +186,7 @@ EVALUATION RULES:
 2. Do not invent missing answers or information.
 3. Judge answer quality, not answer length.
 4. Be fair to a college student.
-5. Give specific and helpful improvement suggestions.
+5. Give specific improvement suggestions.
 
 For HR questions, evaluate:
 - Relevance
@@ -78,6 +203,7 @@ For technical questions, evaluate:
 - Explanation quality
 
 SCORING:
+
 - Each question score must be between 0 and 10.
 - Overall score must be between 0 and 100.
 - Communication, confidence, professionalism and clarity must be percentages.
@@ -106,34 +232,69 @@ INTERVIEW ANSWERS:
 ${JSON.stringify(answers, null, 2)}
 `;
 
-        // Generate evaluation using Gemini
-        const response = await ai.models.generateContent({
-            model: "gemini-3.5-flash-lite",
-            contents: interviewPrompt,
-            config: {
-                responseMimeType: "application/json",
-                temperature: 0.3
-            }
-        });
+        // Generate evaluation with retry logic
+        let response;
+        let lastError;
 
+        for (let attempt = 0; attempt < 3; attempt++) {
+
+            try {
+
+                response = await ai.models.generateContent({
+                    model: "gemini-3.5-flash-lite",
+                    contents: interviewPrompt,
+                    config: {
+                        responseMimeType: "application/json",
+                        temperature: 0.3
+                    }
+                });
+
+                break;
+
+            } catch (error) {
+
+                lastError = error;
+
+                const status = Number(
+                    error.status || error.code
+                );
+
+                // Retry only temporary server/rate-limit errors
+                if (![429, 500, 502, 503, 504].includes(status)) {
+                    throw error;
+                }
+
+                console.log(
+                    `Gemini attempt ${attempt + 1} failed with status ${status}.`
+                );
+
+                if (attempt < 2) {
+
+                    const delay = 1000 * (2 ** attempt);
+
+                    await new Promise(resolve =>
+                        setTimeout(resolve, delay)
+                    );
+
+                }
+
+            }
+
+        }
+
+        if (!response) {
+            throw lastError || new Error("Gemini evaluation failed.");
+        }
+
+        // Read Gemini response
         const output = response.text;
 
         if (!output) {
             throw new Error("Gemini returned an empty response.");
         }
 
-        // Parse Gemini response
-        let evaluation;
-
-        try {
-            evaluation = JSON.parse(output);
-        } catch (error) {
-            console.error("Invalid Gemini JSON:", output);
-
-            return res.status(500).json({
-                message: "Gemini returned an invalid evaluation format."
-            });
-        }
+        // Parse JSON
+        const evaluation = JSON.parse(output);
 
         // Validate overall score
         if (
@@ -153,12 +314,14 @@ ${JSON.stringify(answers, null, 2)}
         ];
 
         for (const field of percentageFields) {
+
             if (
                 typeof evaluation[field] !== "string" ||
                 !/^(100|[0-9]{1,2})%$/.test(evaluation[field])
             ) {
                 throw new Error(`Invalid ${field} percentage.`);
             }
+
         }
 
         // Validate recommendation
@@ -169,12 +332,17 @@ ${JSON.stringify(answers, null, 2)}
             throw new Error("Incomplete evaluation received.");
         }
 
-        // Validate individual question feedback
-        if (evaluation.questionEvaluations.length !== answers.length) {
-            throw new Error("Gemini returned an incorrect number of question evaluations.");
+        // Validate question evaluations
+        if (
+            evaluation.questionEvaluations.length !== answers.length
+        ) {
+            throw new Error(
+                "Gemini returned an incorrect number of question evaluations."
+            );
         }
 
         for (const item of evaluation.questionEvaluations) {
+
             if (
                 typeof item.score !== "number" ||
                 item.score < 0 ||
@@ -183,26 +351,40 @@ ${JSON.stringify(answers, null, 2)}
             ) {
                 throw new Error("Invalid question evaluation received.");
             }
+
         }
 
-        // Send evaluation to frontend
+        // Mark AI-generated report
+        evaluation.evaluationSource = "gemini";
+
         return res.status(200).json(evaluation);
 
     } catch (error) {
+
         console.error("Gemini evaluation error:", error);
 
-        return res.status(500).json({
-            message: "Unable to evaluate interview using Gemini.",
-            error: error.message
-        });
+        // Use backup evaluator
+        console.log("Using backup rule-based evaluator.");
+
+        const fallback = evaluateWithoutAI(
+            Array.isArray(req.body.answers)
+                ? req.body.answers
+                : []
+        );
+
+        return res.status(200).json(fallback);
+
     }
+
 };
+
 
 /* =========================================================
    AI RESUME SUMMARY GENERATOR
    ========================================================= */
 
 const generateResumeSummary = async (req, res) => {
+
     try {
 
         if (!process.env.GEMINI_API_KEY) {
@@ -233,7 +415,7 @@ const generateResumeSummary = async (req, res) => {
             preferredRole
         } = req.body;
 
-        // Check whether sufficient information is provided.
+        // Check whether sufficient information is provided
         const hasDetails = [
             degree,
             technicalSkills,
@@ -246,10 +428,12 @@ const generateResumeSummary = async (req, res) => {
 
         if (!hasDetails) {
             return res.status(400).json({
-                message: "Please enter some education, skills, project or career details first."
+                message:
+                    "Please enter some education, skills, project or career details first."
             });
         }
 
+        // Import Gemini SDK
         const { GoogleGenAI } = await import("@google/genai");
 
         const ai = new GoogleGenAI({
@@ -332,7 +516,14 @@ INSTRUCTIONS:
         });
 
     }
+
 };
+
+
+/* =========================================================
+   EXPORT CONTROLLERS
+   ========================================================= */
+
 module.exports = {
     evaluateInterview,
     generateResumeSummary
